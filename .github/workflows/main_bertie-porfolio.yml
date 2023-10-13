@@ -27,7 +27,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: build
+        name: build-artifact
         path: my-react-app - Bertie/build
 
   deploy:
