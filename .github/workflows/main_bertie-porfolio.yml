@@ -22,7 +22,7 @@ jobs:
       run: npm install --prefix 'my-react-app - Bertie'
       
     - name: Build
-      run: npm run build --prefix 'my-react-app - Bertie'
+      run: CI=false npm run build --prefix 'my-react-app - Bertie'
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
@@ -47,4 +47,3 @@ jobs:
         slot-name: 'Production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6607B78F7F024E418445247EF4E69612 }}
         package: .
-
