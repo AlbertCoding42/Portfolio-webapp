@@ -18,6 +18,8 @@ jobs:
       with:
         node-version: '16'
 
+    - name: Navigate to React app directory
+      run: cd 'my-react-app - Bertie'
     - name: Install Dependencies
       run: npm install
       
@@ -28,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: build
-        path: build
+        path: my-react-app - Bertie/build
 
   deploy:
     runs-on: ubuntu-latest
