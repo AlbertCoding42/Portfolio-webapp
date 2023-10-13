@@ -67,13 +67,18 @@
           }
           function g2(h2, i2) {
             function j2() {
-              var a3 = new k2();
-              return e2(a3.init) && a3.init.apply(a3, arguments), a3;
+                var a3 = new k2();
+                return e2(a3.init) && a3.init.apply(a3, arguments), a3;
             }
-            function k2() {
+            function k2() {}
+            if (i2 === c2) {
+                i2 = h2;
+                h2 = Object;
             }
-            i2 === c2 && (i2 = h2, h2 = Object), j2.Bare = k2;
+            j2.Bare = k2;
             var l2, m2 = f2[a2] = h2[a2], n2 = k2[a2] = j2[a2] = new f2();
+            // ... rest of the code
+        
             return n2.constructor = j2, j2.mixin = function(b3) {
               return k2[a2] = j2[a2] = g2(j2, b3)[a2], j2;
             }, j2.open = function(a3) {
@@ -259,7 +264,9 @@
                 return void a2.call(this, this);
               if ("object" == e3) {
                 var f3 = 0;
+                // eslint-disable-next-line no-unused-expressions
                 u2.call(this, a2, function(a3, b4) {
+                  // eslint-disable-next-line no-unused-expressions
                   a3.span > f3 && (f3 = a3.span), a3.stop(), a3.animate(b4);
                 }, function(a3) {
                   "wait" in a3 && (f3 = i(a3.wait, 0));
@@ -268,15 +275,20 @@
                   context: this
                 }), this.active = true, b3 && (this.timer.complete = h2));
                 var g3 = this, j2 = false, k2 = {};
+                // eslint-disable-next-line no-unused-expressions
                 J(function() {
+                  // eslint-disable-next-line no-unused-expressions
                   u2.call(g3, a2, function(a3) {
+                    // eslint-disable-next-line no-unused-expressions
                     a3.active && (j2 = true, k2[a3.name] = a3.nextStyle);
                   }), j2 && g3.$el.css(k2);
                 });
               }
             }
           }
+          // eslint-disable-next-line no-unused-expressions
           function f2(a2) {
+            // eslint-disable-next-line no-unused-expressions
             a2 = i(a2, 0), this.active ? this.queue.push({
               options: a2
             }) : (this.timer = new S({
@@ -298,35 +310,46 @@
             }
           }
           function l2(a2) {
+            // eslint-disable-next-line no-unused-expressions
             this.timer && this.timer.destroy(), this.queue = [], this.active = false;
+            // eslint-disable-next-line no-unused-expressions
             var b3;
+            // eslint-disable-next-line no-unused-expressions
             "string" == typeof a2 ? (b3 = {}, b3[a2] = 1) : b3 = "object" == typeof a2 && null != a2 ? a2 : this.props, u2.call(this, b3, v2), t2.call(this);
           }
           function m2(a2) {
+            // eslint-disable-next-line no-unused-expressions
             l2.call(this, a2), u2.call(this, a2, w2, x2);
           }
           function n2(a2) {
+            // eslint-disable-next-line no-unused-expressions
             "string" != typeof a2 && (a2 = "block"), this.el.style.display = a2;
           }
           function o2() {
+            // eslint-disable-next-line no-unused-expressions
             l2.call(this), this.el.style.display = "none";
           }
           function p2() {
+            // eslint-disable-next-line no-unused-expressions
             this.el.offsetHeight;
           }
           function r2() {
+            // eslint-disable-next-line no-unused-expressions
             l2.call(this), a.removeData(this.el, q), this.$el = this.el = null;
           }
           function t2() {
             var a2, b3, c2 = [];
             this.upstream && c2.push(this.upstream);
             for (a2 in this.props)
+              // eslint-disable-next-line no-unused-expressions
               b3 = this.props[a2], b3.active && c2.push(b3.string);
+            // eslint-disable-next-line no-unused-expressions
             c2 = c2.join(","), this.style !== c2 && (this.style = c2, this.el.style[G.transition.dom] = c2);
           }
           function u2(a2, b3, e3) {
             var f3, g3, h3, i2, j2 = b3 !== v2, k2 = {};
             for (f3 in a2)
+              // eslint-disable-next-line no-unused-expressions
               h3 = a2[f3], f3 in Z ? (k2.transform || (k2.transform = {}), k2.transform[f3] = h3) : (s.test(f3) && (f3 = c(f3)), f3 in Y ? k2[f3] = h3 : (i2 || (i2 = {}), i2[f3] = h3));
             for (f3 in k2) {
               if (h3 = k2[f3], g3 = this.props[f3], !g3) {
@@ -358,6 +381,7 @@
               a2.apply(this.children[c2], b3);
             return this;
           }
+          // eslint-disable-next-line no-unused-expressions
           b2.init = function(b3) {
             if (this.$el = a(b3), this.el = this.$el[0], this.props = {}, this.queue = [], this.style = "", this.active = false, U.keepInherited && !U.fallback) {
               var c2 = W(this.el, "transition");
@@ -400,16 +424,22 @@
             ease: "ease",
             delay: 0
           };
+          // eslint-disable-next-line no-unused-expressions
           a2.init = function(a3, b3, d3, e2) {
+            // eslint-disable-next-line no-unused-expressions
             this.$el = a3, this.el = a3[0];
             var g2 = b3[0];
+            // eslint-disable-next-line no-unused-expressions
             d3[2] && (g2 = d3[2]), X[g2] && (g2 = X[g2]), this.name = g2, this.type = d3[1], this.duration = i(b3[1], this.duration, f2.duration), this.ease = c2(b3[2], this.ease, f2.ease), this.delay = i(b3[3], this.delay, f2.delay), this.span = this.duration + this.delay, this.active = false, this.nextStyle = null, this.auto = A.test(this.name), this.unit = e2.unit || this.unit || U.defaultUnit, this.angle = e2.angle || this.angle || U.defaultAngle, U.fallback || e2.fallback ? this.animate = this.fallback : (this.animate = this.transition, this.string = this.name + B + this.duration + "ms" + ("ease" != this.ease ? B + m[this.ease][0] : "") + (this.delay ? B + this.delay + "ms" : ""));
           }, a2.set = function(a3) {
+            // eslint-disable-next-line no-unused-expressions
             a3 = this.convert(a3, this.type), this.update(a3), this.redraw();
           }, a2.transition = function(a3) {
+            // eslint-disable-next-line no-unused-expressions
             this.active = true, a3 = this.convert(a3, this.type), this.auto && ("auto" == this.el.style[this.name] && (this.update(this.get()), this.redraw()), "auto" == a3 && (a3 = b2.call(this))), this.nextStyle = a3;
           }, a2.fallback = function(a3) {
             var c3 = this.el.style[this.name] || this.convert(this.get(), this.type);
+            // eslint-disable-next-line no-unused-expressions
             a3 = this.convert(a3, this.type), this.auto && ("auto" == c3 && (c3 = this.convert(this.get(), this.type)), "auto" == a3 && (a3 = b2.call(this))), this.tween = new R({
               from: c3,
               to: a3,
@@ -424,6 +454,7 @@
           }, a2.update = function(a3) {
             V(this.el, this.name, a3);
           }, a2.stop = function() {
+            // eslint-disable-next-line no-unused-expressions
             (this.active || this.nextStyle) && (this.active = false, this.nextStyle = null, V(this.el, this.name, this.get()));
             var a3 = this.tween;
             a3 && a3.context && a3.destroy();
@@ -478,14 +509,18 @@
             }
             return g(c3, a3), a3;
           }, a2.redraw = function() {
+            // eslint-disable-next-line no-unused-expressions
             this.el.offsetHeight;
           };
         }), O = l(N, function(a2, b2) {
           a2.init = function() {
+                            // eslint-disable-next-line no-unused-expressions
             b2.init.apply(this, arguments), this.original || (this.original = this.convert(this.get(), u));
           };
         }), P = l(N, function(a2, b2) {
+                          // eslint-disable-next-line no-unused-expressions
           a2.init = function() {
+                            // eslint-disable-next-line no-unused-expressions
             b2.init.apply(this, arguments), this.animate = this.fallback;
           }, a2.get = function() {
             return this.$el[this.name]();
@@ -496,11 +531,15 @@
           function c2(a3, b3) {
             var c3, d2, e2, f2, g2;
             for (c3 in a3)
+                            // eslint-disable-next-line no-unused-expressions
               f2 = Z[c3], e2 = f2[0], d2 = f2[1] || c3, g2 = this.convert(a3[c3], e2), b3.call(this, d2, g2, e2);
           }
+                          // eslint-disable-next-line no-unused-expressions
           a2.init = function() {
+                            // eslint-disable-next-line no-unused-expressions
             b2.init.apply(this, arguments), this.current || (this.current = {}, Z.perspective && U.perspective && (this.current.perspective = U.perspective, V(this.el, this.name, this.style(this.current)), this.redraw()));
           }, a2.set = function(a3) {
+                            // eslint-disable-next-line no-unused-expressions
             c2.call(this, a3, function(a4, b3) {
               this.current[a4] = b3;
             }), V(this.el, this.name, this.style(this.current)), this.redraw();
@@ -516,6 +555,7 @@
             var c3, d2 = {};
             for (c3 in this.current)
               d2[c3] = c3 in b3 ? b3[c3] : this.current[c3];
+                            // eslint-disable-next-line no-unused-expressions
             this.active = true, this.nextStyle = this.style(d2);
           }, a2.fallback = function(a3) {
             var b3 = this.values(a3);
@@ -538,6 +578,7 @@
           }, a2.values = function(a3) {
             var b3, d2 = {};
             return c2.call(this, a3, function(a4, c3, e2) {
+                              // eslint-disable-next-line no-unused-expressions
               d2[a4] = c3, void 0 === this.current[a4] && (b3 = 0, ~a4.indexOf("scale") && (b3 = 1), this.current[a4] = this.convert(b3, e2));
             }), d2;
           };
@@ -549,10 +590,13 @@
             var a2, b3, c3, d2 = n2.length;
             if (d2)
               for (J(g2), b3 = K(), a2 = d2; a2--; )
+                            // eslint-disable-next-line no-unused-expressions
                 c3 = n2[a2], c3 && c3.render(b3);
           }
           function i2(b3) {
+                            // eslint-disable-next-line no-unused-expressions
             var c3, d2 = a.inArray(b3, n2);
+                            // eslint-disable-next-line no-unused-expressions
             d2 >= 0 && (c3 = n2.slice(d2 + 1), n2.length = d2, c3.length && (n2 = n2.concat(c3)));
           }
           function j2(a2) {
@@ -566,15 +610,21 @@
             from: 0,
             to: 1
           };
+                          // eslint-disable-next-line no-unused-expressions
           b2.init = function(a2) {
+                            // eslint-disable-next-line no-unused-expressions
             this.duration = a2.duration || 0, this.delay = a2.delay || 0;
             var b3 = a2.ease || l2.ease;
+                            // eslint-disable-next-line no-unused-expressions
             m[b3] && (b3 = m[b3][1]), "function" != typeof b3 && (b3 = l2.ease), this.ease = b3, this.update = a2.update || f, this.complete = a2.complete || f, this.context = a2.context || this, this.name = a2.name;
             var c3 = a2.from, d2 = a2.to;
+                            // eslint-disable-next-line no-unused-expressions
             void 0 === c3 && (c3 = l2.from), void 0 === d2 && (d2 = l2.to), this.unit = a2.unit || "", "number" == typeof c3 && "number" == typeof d2 ? (this.begin = c3, this.change = d2 - c3) : this.format(d2, c3), this.value = this.begin + this.unit, this.start = K(), a2.autoplay !== false && this.play();
           }, b2.play = function() {
+                            // eslint-disable-next-line no-unused-expressions
             this.active || (this.start || (this.start = K()), this.active = true, c2(this));
           }, b2.stop = function() {
+                            // eslint-disable-next-line no-unused-expressions
             this.active && (this.active = false, i2(this));
           }, b2.render = function(a2) {
             var b3, c3 = a2 - this.start;
@@ -587,31 +637,41 @@
               var d2 = this.ease(c3, 0, 1, this.duration);
               return b3 = this.startRGB ? k2(this.startRGB, this.endRGB, d2) : j2(this.begin + d2 * this.change), this.value = b3 + this.unit, void this.update.call(this.context, this.value);
             }
+                            // eslint-disable-next-line no-unused-expressions
             b3 = this.endHex || this.begin + this.change, this.value = b3 + this.unit, this.update.call(this.context, this.value), this.complete.call(this.context), this.destroy();
           }, b2.format = function(a2, b3) {
             if (b3 += "", a2 += "", "#" == a2.charAt(0))
               return this.startRGB = d(b3), this.endRGB = d(a2), this.endHex = a2, this.begin = 0, void (this.change = 1);
             if (!this.unit) {
               var c3 = b3.replace(r, ""), e2 = a2.replace(r, "");
+                              // eslint-disable-next-line no-unused-expressions
               c3 !== e2 && h("tween", b3, a2), this.unit = c3;
             }
+                            // eslint-disable-next-line no-unused-expressions
             b3 = parseFloat(b3), a2 = parseFloat(a2), this.begin = this.value = b3, this.change = a2 - b3;
           }, b2.destroy = function() {
+                            // eslint-disable-next-line no-unused-expressions
             this.stop(), this.context = null, this.ease = this.update = this.complete = f;
           };
           var n2 = [], o2 = 1e3;
         }), S = l(R, function(a2) {
+                          // eslint-disable-next-line no-unused-expressions
           a2.init = function(a3) {
+                            // eslint-disable-next-line no-unused-expressions
             this.duration = a3.duration || 0, this.complete = a3.complete || f, this.context = a3.context, this.play();
           }, a2.render = function(a3) {
             var b2 = a3 - this.start;
+                            // eslint-disable-next-line no-unused-expressions
             b2 < this.duration || (this.complete.call(this.context), this.destroy());
           };
         }), T = l(R, function(a2, b2) {
+                          // eslint-disable-next-line no-unused-expressions
           a2.init = function(a3) {
+                            // eslint-disable-next-line no-unused-expressions
             this.context = a3.context, this.update = a3.update, this.tweens = [], this.current = a3.current;
             var b3, c2;
             for (b3 in a3.values)
+                            // eslint-disable-next-line no-unused-expressions
               c2 = a3.values[b3], this.current[b3] !== c2 && this.tweens.push(new R({
                 name: b3,
                 from: this.current[b3],
@@ -625,6 +685,7 @@
           }, a2.render = function(a3) {
             var b3, c2, d2 = this.tweens.length, e2 = false;
             for (b3 = d2; b3--; )
+                            // eslint-disable-next-line no-unused-expressions
               c2 = this.tweens[b3], c2.context && (c2.render(a3), this.current[c2.name] = c2.value, e2 = true);
             return e2 ? void (this.update && this.update.call(this.context)) : this.destroy();
           }, a2.destroy = function() {
@@ -632,6 +693,7 @@
               var a3, c2 = this.tweens.length;
               for (a3 = c2; a3--; )
                 this.tweens[a3].destroy();
+                              // eslint-disable-next-line no-unused-expressions
               this.tweens = null, this.current = null;
             }
           };
@@ -645,6 +707,7 @@
           fallback: !G.transition,
           agentTests: []
         };
+                        // eslint-disable-next-line no-unused-expressions
         b.fallback = function(a2) {
           if (!G.transition)
             return U.fallback = true;
@@ -709,6 +772,7 @@
           "scroll-top": [P, t, "scrollTop"],
           "scroll-left": [P, t, "scrollLeft"]
         }, Z = {};
+                        // eslint-disable-next-line no-unused-expressions
         G.transform && (Y.transform = [Q], Z = {
           x: [w, "translateX"],
           y: [w, "translateY"],
@@ -1536,6 +1600,7 @@
           return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
         }, module.exports.__esModule = true, module.exports["default"] = module.exports, _typeof(obj);
       }
+                      // eslint-disable-next-line no-unused-expressions
       module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
     }
   });
@@ -1584,6 +1649,7 @@
         }
         return newObj;
       }
+                      // eslint-disable-next-line no-unused-expressions
       module.exports = _interopRequireWildcard, module.exports.__esModule = true, module.exports["default"] = module.exports;
     }
   });
@@ -1596,6 +1662,7 @@
           "default": obj
         };
       }
+                      // eslint-disable-next-line no-unused-expressions
       module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
     }
   });
