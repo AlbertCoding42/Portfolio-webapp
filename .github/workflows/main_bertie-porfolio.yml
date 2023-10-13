@@ -26,7 +26,10 @@ jobs:
 
     - name: ZIP build directory
       run: tar -zcvf build.tar.gz -C my-react-app\ -\ Bertie/build .
-      
+
+    - name: List repository files
+      run: ls -la
+
     - name: Deploy to Azure
       uses: azure/webapps-deploy@v2
       with:
