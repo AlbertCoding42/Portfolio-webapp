@@ -27,6 +27,12 @@ jobs:
     - name: ZIP build directory
       run: tar -zcvf build.tar.gz -C my-react-app\ -\ Bertie/build .
 
+    - name: Upload build.tar.gz as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifact
+        path: ./build.tar.gz
+
     - name: List repository files
       run: ls -la
 
