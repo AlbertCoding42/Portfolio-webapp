@@ -22,7 +22,7 @@ jobs:
       run: npm install --prefix 'my-react-app - Bertie'
       
     - name: Build
-      run: npm run build --prefix 'my-react-app - Bertie'
+      run: CI=false npm run build --prefix 'my-react-app - Bertie'
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
