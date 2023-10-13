@@ -23,11 +23,14 @@ jobs:
       
     - name: Build
       run: CI=false npm run build --prefix 'my-react-app - Bertie'
-        
+
+    - name: ZIP build directory
+      run: tar -zcvf build.tar.gz -C my-react-app\ -\ Bertie/build .
+      
     - name: Deploy to Azure
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'bertie-porfolio'
         slot-name: 'Production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6607B78F7F024E418445247EF4E69612 }}
-        package: my-react-app - Bertie/build
+        package: ./build.tar.gz
