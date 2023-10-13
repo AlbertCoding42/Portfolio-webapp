@@ -1,8 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
-
-name: Build and deploy Python app to Azure Web App - bertie-porfolio
+name: Build and Deploy to Azure
 
 on:
   push:
@@ -13,51 +9,42 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
 
-      - name: Set up Python version
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.11'
-
-      - name: Create and start virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
+    - name: Install Dependencies
+      run: npm install
       
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+    - name: Build
+      run: npm run build
       
-      - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v2
-        with:
-          name: python-app
-          path: |
-            . 
-            !venv/
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+    
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: python-app
-          path: .
-          
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
-        id: deploy-to-webapp
-        with:
-          app-name: 'bertie-porfolio'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6607B78F7F024E418445247EF4E69612 }}
+    - name: Download build artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: build
+        
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'bertie-porfolio'
+        slot-name: 'Production'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6607B78F7F024E418445247EF4E69612 }}
+        package: .
+
