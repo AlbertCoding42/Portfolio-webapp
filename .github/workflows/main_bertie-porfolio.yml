@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -23,22 +23,6 @@ jobs:
       
     - name: Build
       run: CI=false npm run build --prefix 'my-react-app - Bertie'
-      
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-artifact
-        path: my-react-app - Bertie/build
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
-    - name: Download build artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: build-artifact
         
     - name: Deploy to Azure
       uses: azure/webapps-deploy@v2
@@ -46,4 +30,4 @@ jobs:
         app-name: 'bertie-porfolio'
         slot-name: 'Production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6607B78F7F024E418445247EF4E69612 }}
-        package: .
+        package: my-react-app - Bertie/build
