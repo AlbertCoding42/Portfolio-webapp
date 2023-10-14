@@ -19,13 +19,13 @@ jobs:
         node-version: '16'
 
     - name: Install Dependencies
-      run: npm install --prefix 'my-react-app - Bertie'
+      run: npm install --prefix "my-react-app - Bertie"
       
     - name: Build
-      run: CI=false npm run build --prefix 'my-react-app - Bertie'
+      run: CI=false npm run build --prefix "my-react-app - Bertie"
 
     - name: ZIP build directory
-      run: tar -zcvf build.tar.gz -C my-react-app\ -\ Bertie/build .
+      run: tar -zcvf build.tar.gz -C "my-react-app - Bertie/build" .
 
     - name: Upload build.tar.gz as artifact
       uses: actions/upload-artifact@v2
@@ -34,6 +34,14 @@ jobs:
         path: ./build.tar.gz
 
     - name: List repository files
+      run: ls -la
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifact
+
+    - name: List files after downloading artifact
       run: ls -la
 
     - name: Deploy to Azure
