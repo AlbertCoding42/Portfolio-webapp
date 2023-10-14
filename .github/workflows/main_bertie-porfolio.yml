@@ -1,5 +1,3 @@
-name: Build and Deploy to Azure
-
 on:
   push:
     branches:
@@ -48,6 +46,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'bertie-porfolio'
-        slot-name: 'Production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6607B78F7F024E418445247EF4E69612 }}
         package: ./build.tar.gz
